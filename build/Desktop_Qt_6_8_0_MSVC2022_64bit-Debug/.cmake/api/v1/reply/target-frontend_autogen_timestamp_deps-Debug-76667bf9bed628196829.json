@@ -1,0 +1,38 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"src/frontend/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "core::@0618756b1ff51bca1a0e"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "frontend_autogen_timestamp_deps::@5ac769f44fc6001c3db0",
+	"isGeneratorProvided" : true,
+	"name" : "frontend_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "src/frontend",
+		"source" : "src/frontend"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

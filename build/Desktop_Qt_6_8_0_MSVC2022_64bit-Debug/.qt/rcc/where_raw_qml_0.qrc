@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/where/">
+    <file alias="Main.qml">E:/cpp_projects/where/Main.qml</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=E:/Qt/Tools/CMake_64/bin/cmake.exe;-P;E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/download-json-populate.cmake;COMMAND;E:/Qt/Tools/CMake_64/bin/cmake.exe;-P;E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/verify-json-populate.cmake;COMMAND;E:/Qt/Tools/CMake_64/bin/cmake.exe;-P;E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/extract-json-populate.cmake
+source_dir=E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-src
+work_dir=E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps
+url(s)=https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz
+hash=
+no_extract=
+

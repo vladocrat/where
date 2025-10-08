@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/CMakeFiles/json-populate"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/CMakeFiles/json-populate.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/CMakeFiles/json-populate-complete.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-build.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-configure.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-download.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-install.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-mkdir.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-patch.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-test.rule"
+		},
+		{
+			"file" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"json-populate"
+		],
+		"name" : "json-populate"
+	}
+}

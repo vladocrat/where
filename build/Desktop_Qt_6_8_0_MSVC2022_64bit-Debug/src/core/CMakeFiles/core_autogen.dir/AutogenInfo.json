@@ -1,0 +1,135 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core/core_autogen",
+	"CMAKE_BINARY_DIR" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core",
+	"CMAKE_CURRENT_SOURCE_DIR" : "E:/cpp_projects/where/src/core",
+	"CMAKE_EXECUTABLE" : "E:/Qt/Tools/CMake_64/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"E:/cpp_projects/where/src/core/CMakeLists.txt",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/Qt6ConfigExtras.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtInstallPaths.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/Qt6Targets.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/Qt6VersionlessAliasTargets.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtFeature.cmake",
+		"E:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CheckCXXCompilerFlag.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtFeatureCommon.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicGitHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicSbomGenerationHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicSbomHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicTestHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicToolHelpers.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake",
+		"E:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "E:/cpp_projects/where",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core/core_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "core_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"E:/cpp_projects/where/src/core/HotKeyEntry.hpp",
+			"MU",
+			"EWIEGA46WW/moc_HotKeyEntry.cpp",
+			null
+		],
+		[
+			"E:/cpp_projects/where/src/core/HotKeyHandler.hpp",
+			"MU",
+			"EWIEGA46WW/moc_HotKeyHandler.cpp",
+			null
+		],
+		[
+			"E:/cpp_projects/where/src/core/HotKeyRecorder.hpp",
+			"MU",
+			"EWIEGA46WW/moc_HotKeyRecorder.cpp",
+			null
+		],
+		[
+			"E:/cpp_projects/where/src/core/HotKeyRepository.hpp",
+			"MU",
+			"EWIEGA46WW/moc_HotKeyRepository.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core/core_autogen/include",
+	"MOC_COMPILATION_FILE" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core/core_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CORE_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/_deps/json-src/include",
+		"E:/Qt/6.8.0/msvc2022_64/include/QtCore",
+		"E:/Qt/6.8.0/msvc2022_64/include",
+		"E:/Qt/6.8.0/msvc2022_64/mkspecs/win32-msvc"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 16,
+	"PARSE_CACHE_FILE" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core/CMakeFiles/core_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "E:/Qt/6.8.0/msvc2022_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 8,
+	"SETTINGS_FILE" : "E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core/CMakeFiles/core_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "E:/cpp_projects/where/src/core/HotKeyEntry.cpp", "MU", null ],
+		[ "E:/cpp_projects/where/src/core/HotKeyHandler.cpp", "MU", null ],
+		[ "E:/cpp_projects/where/src/core/HotKeyRecorder.cpp", "MU", null ],
+		[ "E:/cpp_projects/where/src/core/HotKeyRepository.cpp", "MU", null ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}
