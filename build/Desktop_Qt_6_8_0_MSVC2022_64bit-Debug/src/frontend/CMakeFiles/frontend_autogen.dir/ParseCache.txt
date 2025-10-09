@@ -134,6 +134,7 @@ E:/cpp_projects/where/src/frontend/ApplicationController.hpp
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtGui/qwindowdefs.h
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtGui/qwindowdefs_win.h
  mdp:E:/cpp_projects/where/src/frontend/ApplicationController.hpp
+E:/cpp_projects/where/src/frontend/HotKeyHanlderWorker.cpp
 E:/cpp_projects/where/src/frontend/HotKeyAdapter.hpp
  mmc:Q_OBJECT
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
@@ -237,7 +238,7 @@ E:/cpp_projects/where/src/frontend/HotKeyAdapter.hpp
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtCore/qxptype_traits.h
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtCore/qyieldcpu.h
  mdp:E:/cpp_projects/where/src/frontend/HotKeyAdapter.hpp
-E:/cpp_projects/where/src/frontend/HotKeyHanlderWorker.cpp
+E:/cpp_projects/where/src/frontend/HotKeyAdapter.cpp
 E:/cpp_projects/where/src/frontend/HotKeyHanlderWorker.hpp
  mmc:Q_OBJECT
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
@@ -341,5 +342,4 @@ E:/cpp_projects/where/src/frontend/HotKeyHanlderWorker.hpp
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtCore/qxptype_traits.h
  mdp:E:/Qt/6.8.0/msvc2022_64/include/QtCore/qyieldcpu.h
  mdp:E:/cpp_projects/where/src/frontend/HotKeyHanlderWorker.hpp
-E:/cpp_projects/where/src/frontend/HotKeyAdapter.cpp
 E:/cpp_projects/where/src/frontend/ApplicationController.cpp

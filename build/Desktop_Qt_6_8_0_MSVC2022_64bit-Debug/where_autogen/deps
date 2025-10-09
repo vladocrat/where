@@ -775,6 +775,15 @@ where_autogen/timestamp: \
 	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets-relwithdebinfo.cmake \
 	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets.cmake \
 	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsVersionlessTargets.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgAdditionalTargetInfo.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgConfig.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersionImpl.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgDependencies.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgTargets-debug.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgTargets-relwithdebinfo.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgTargets.cmake \
+	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgVersionlessAliasTargets.cmake \
 	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateAdditionalTargetInfo.cmake \
 	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfig.cmake \
 	E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake \
@@ -822,4 +831,5 @@ where_autogen/timestamp: \
 	E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/CMakeFiles/3.29.3/CMakeRCCompiler.cmake \
 	E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/CMakeFiles/3.29.3/CMakeSystem.cmake \
 	E:/cpp_projects/where/main.cpp \
+	E:/cpp_projects/where/src/resources/resources.qrc \
 	E:/Qt/Tools/CMake_64/bin/cmake.exe

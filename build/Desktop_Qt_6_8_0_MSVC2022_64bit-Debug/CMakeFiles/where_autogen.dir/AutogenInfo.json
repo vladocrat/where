@@ -1073,6 +1073,16 @@
 		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickAdditionalTargetInfo.cmake",
 		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickPlugins.cmake",
 		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickVersionlessAliasTargets.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersionImpl.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgConfig.cmake",
+		"E:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgDependencies.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgTargets.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgTargets-debug.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgTargets-relwithdebinfo.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgAdditionalTargetInfo.cmake",
+		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Svg/Qt6SvgVersionlessAliasTargets.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/GNUInstallDirs.cmake",
 		"E:/cpp_projects/where/3rd_party/LoadDependancies.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/FetchContent.cmake",
@@ -1083,7 +1093,8 @@
 		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/GNUInstallDirs.cmake",
 		"E:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in",
-		"E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/.qt/qml_imports/where_conf.cmake"
+		"E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/.qt/qml_imports/where_conf.cmake",
+		"E:/cpp_projects/where/src/resources/resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "E:/cpp_projects/where",
 	"CROSS_CONFIG" : false,
@@ -1105,6 +1116,7 @@
 		"QT_QMLWORKERSCRIPT_LIB",
 		"QT_QML_LIB",
 		"QT_QUICK_LIB",
+		"QT_SVG_LIB",
 		"UNICODE",
 		"WIN32",
 		"WIN64",
@@ -1139,7 +1151,8 @@
 		"E:/Qt/6.8.0/msvc2022_64/include/QtQmlMeta",
 		"E:/Qt/6.8.0/msvc2022_64/include/QtQmlModels",
 		"E:/Qt/6.8.0/msvc2022_64/include/QtQmlWorkerScript",
-		"E:/Qt/6.8.0/msvc2022_64/include/QtOpenGL"
+		"E:/Qt/6.8.0/msvc2022_64/include/QtOpenGL",
+		"E:/Qt/6.8.0/msvc2022_64/include/QtSvg"
 	],
 	"MOC_MACRO_NAMES" : 
 	[
