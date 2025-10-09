@@ -15,6 +15,8 @@ struct BackendInfo
     nlohmann::json toJson() const noexcept;
 
     static BackendInfo fromJson(const nlohmann::json& json) noexcept;
+
+    bool operator<(const BackendInfo& other) const noexcept;
 };
 
 }

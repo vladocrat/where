@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <functional>
+#include <string>
 
 class Backend;
 
@@ -14,8 +15,7 @@ class BackendLibrary
 {
     BackendLibrary(const BackendLibrary&) = delete;
     BackendLibrary& operator=(const BackendLibrary&) = delete;
-    BackendLibrary(BackendLibrary&&) = delete;
-    BackendLibrary& operator=(BackendLibrary&&) = delete;
+
 public:
     using CreateFunc = std::function<Backend*()>;
     using DestoryFunc = std::function<void(Backend*)>;
@@ -23,9 +23,12 @@ public:
 
     BackendLibrary();
     ~BackendLibrary() noexcept;
+    BackendLibrary(BackendLibrary&&);
+    BackendLibrary& operator=(BackendLibrary&&);
 
     bool load(const BackendInfo& info) noexcept;
     BackendPtr create() noexcept;
+    std::string error() const noexcept;
 
 private:
     struct Impl;

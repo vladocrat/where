@@ -22,4 +22,13 @@ BackendInfo Where::BackendInfo::fromJson(const nlohmann::json& json) noexcept
     };
 }
 
+bool BackendInfo::operator<(const BackendInfo& other) const noexcept
+{
+    if (name != other.name) {
+        return other.name < name;
+    }
+
+    return false;
+}
+
 }

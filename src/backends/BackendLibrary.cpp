@@ -36,6 +36,35 @@ BackendLibrary::~BackendLibrary() noexcept
     FreeLibrary(_impl->dll);
 }
 
+BackendLibrary::BackendLibrary(BackendLibrary&& other)
+    : _impl{std::move(other._impl)}
+{
+    if (_impl && _impl->dll) {
+        other._impl = std::make_unique<Impl>();
+        other._impl->dll = nullptr;
+        other._impl->createFunc = nullptr;
+        other._impl->destroyFunc = nullptr;
+    }
+}
+
+BackendLibrary& BackendLibrary::operator=(BackendLibrary&& other)
+{
+    if (this == &other) {
+        return *this;
+    }
+
+    _impl = std::move(other._impl);
+
+    if (_impl && _impl->dll) {
+        other._impl = std::make_unique<Impl>();
+        other._impl->dll = nullptr;
+        other._impl->createFunc = nullptr;
+        other._impl->destroyFunc = nullptr;
+    }
+
+    return *this;
+}
+
 bool BackendLibrary::load(const BackendInfo& info) noexcept
 {
 #ifdef WIN32
@@ -63,6 +92,27 @@ bool BackendLibrary::load(const BackendInfo& info) noexcept
 BackendLibrary::BackendPtr BackendLibrary::create() noexcept
 {
     return std::move(BackendPtr(_impl->createFunc(), _impl->destroyFunc));
+}
+
+std::string BackendLibrary::error() const noexcept
+{
+#ifdef WIN32
+    const auto errorCode = GetLastError();
+
+    LPSTR messageBuffer = nullptr;
+    size_t size = FormatMessageA(
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+        NULL,
+        errorCode,
+        MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+        (LPSTR)&messageBuffer,
+        0, NULL
+        );
+
+    std::string message(messageBuffer, size);
+    LocalFree(messageBuffer);
+    return std::move(message);
+#endif
 }
 
 }

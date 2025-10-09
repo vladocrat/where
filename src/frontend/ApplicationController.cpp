@@ -6,6 +6,7 @@
 #include <backends/BackendInfo.hpp>
 #include <backends/BackendLibrary.hpp>
 #include <backends/Backend.hpp>
+#include <backends/BackendController.hpp>
 
 namespace Where
 {
@@ -13,6 +14,7 @@ namespace Where
 struct ApplicationController::Impl
 {
     QQmlApplicationEngine engine;
+    BackendController backend;
 };
 
 ApplicationController::ApplicationController(int& argc, char** argv)
@@ -29,15 +31,16 @@ ApplicationController::ApplicationController(int& argc, char** argv)
         qDebug() << b.name;
     }
 
-    BackendLibrary lib;
-    qDebug() << backends.value()[0].dllLocation.string().c_str();
+    qDebug() << _impl->backend.backendsCount();
+    const auto results = _impl->backend.search("logs");
 
-    if (!lib.load(backends.value()[0])) {
-        qDebug() << ":(";
+    if (!results) {
+        qDebug() << "Failed to fetch res";
     }
 
-    auto backend = lib.create();
-    backend->executeTask();
+    for (size_t i = 0; i < results.value().size; i++) {
+        qDebug() <<  results.value().files[i].fileName <<  results.value().files[i].fullFilePath.string();
+    }
 }
 
 ApplicationController::~ApplicationController()
