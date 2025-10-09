@@ -5,7 +5,11 @@ project(where VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 20)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
+set(CMAKE_AUTORCC ON)
+
+set(RESOURCES_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/resources)
+
+find_package(Qt6 6.5 REQUIRED COMPONENTS Quick Svg)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -15,9 +19,11 @@ include(3rd_party/LoadDependancies.cmake)
 
 file(GLOB SOURCES CONFIGURE_DEPENDS *.cpp)
 file(GLOB HEADERS CONFIGURE_DEPENDS *.hpp)
+file(GLOB ICONS CONFIGURE_DEPENDS ${RESOURCES_PATH}/icons/*.svg)
 
 qt_add_executable(where
     main.cpp
+    ${RESOURCES_PATH}/resources.qrc
     ${HEADERS}
     ${SOURCES}
 )
@@ -41,7 +47,9 @@ set_target_properties(where PROPERTIES
 )
 
 target_link_libraries(where
-    PRIVATE Qt6::Quick
+    PRIVATE
+    Qt6::Quick
+    Qt6::Svg
     core
     frontend
     nlohmann_json::nlohmann_json

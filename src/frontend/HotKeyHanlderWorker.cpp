@@ -1,6 +1,8 @@
 #include "HotKeyHanlderWorker.hpp"
 
+#ifdef WIN32
 #include <Windows.h>
+#endif
 
 #include <QDebug>
 
@@ -25,7 +27,7 @@ void HotKeyHandlerWorker::run()
 {
     Where::HotKey::HotKeyEntry entry;
     entry.action = Where::HotKey::Action::SHOW_SEARCH_BAR;
-    entry.key = VK_F1;
+   // entry.key = VK_F1;
     entry.mode = Where::HotKey::Mode::NO_REPEAT;
     qDebug() << "starting";
     qDebug() << _impl->handler.setHandler(entry, []() {
