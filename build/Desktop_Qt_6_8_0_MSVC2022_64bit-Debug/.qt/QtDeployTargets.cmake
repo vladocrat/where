@@ -1,7 +1,0 @@
-set(__QT_DEPLOY_TARGET_core_FILE E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/core.lib)
-set(__QT_DEPLOY_TARGET_core_TYPE STATIC_LIBRARY)
-set(__QT_DEPLOY_TARGET_frontend_FILE E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/frontend.lib)
-set(__QT_DEPLOY_TARGET_frontend_TYPE STATIC_LIBRARY)
-set(__QT_DEPLOY_TARGET_where_FILE E:/cpp_projects/where/build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/where.exe)
-set(__QT_DEPLOY_TARGET_where_TYPE EXECUTABLE)
-set(__QT_DEPLOY_TARGET_where_RUNTIME_DLLS E:/Qt/6.8.0/msvc2022_64/bin/Qt6Svgd.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6Quickd.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6QmlMetad.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6QmlWorkerScriptd.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6QmlModelsd.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6Qmld.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6Networkd.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6OpenGLd.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6Guid.dll;E:/Qt/6.8.0/msvc2022_64/bin/Qt6Cored.dll)

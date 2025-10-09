@@ -14,10 +14,6 @@ Window {
     x: Math.round((Screen.width - width) / 2)
     y: Math.round((Screen.height - height) / 2)
 
-    Component.onCompleted: {
-        console.log(Screen.width, Screen.height)
-    }
-
     property int revealIndex: 0
 
     function startReveal() {
@@ -51,49 +47,31 @@ Window {
         ColumnLayout {
             id: column
             anchors.margins: 10
+            width: parent.width
             spacing: 0
 
-            RowLayout {
+            Searchbar {
+                id: searchbar
+
+                Component.onCompleted: {
+                    console.log(width, height)
+                }
+
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.minimumHeight: 60
                 Layout.maximumHeight: 60
                 Layout.alignment: Qt.AlignTop
 
-                Image {
-                    Layout.alignment: Qt.AlignCenter
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    Layout.maximumWidth: 50
-                    Layout.minimumWidth: 50
+                searchIconSource: "qrc:/icons/search_icon.svg"
+                clearSearchIconSource: "qrc:/icons/cross.svg"
+                menuSettingsIconSource: "qrc:/icons/vertical_menu.svg"
 
-                    height: 10
-                    width: 10
-
-                    source: ":/icons/apple.jpg"
-                }
-
-                TextField {
-                    id: searchbar
-
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    Layout.margins: 10
-
-                    placeholderText: "Where is..."
-
-                    background: Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: 10
-                        radius: 30
-                    }
-
-                    onTextEdited: {
-                        if (text !== "") {
-                            startReveal()
-                        } else {
-                            resetReveal()
-                        }
+                onTextEdited: {
+                    if (searchbar.text !== "") {
+                        startReveal()
+                    } else {
+                        resetReveal()
                     }
                 }
             }

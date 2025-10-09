@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>icons/search_icon.svg</file>
-        <file>icons/apple.jpg</file>
+        <file>icons/cross.svg</file>
+        <file>icons/vertical_menu.svg</file>
     </qresource>
 </RCC>

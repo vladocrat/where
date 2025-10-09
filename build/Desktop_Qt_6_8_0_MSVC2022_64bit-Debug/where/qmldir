@@ -1,5 +1,0 @@
-module where
-typeinfo where.qmltypes
-prefer :/qt/qml/where/
-Main 1.0 Main.qml
-
