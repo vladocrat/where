@@ -14,23 +14,6 @@ Window {
     x: Math.round((Screen.width - width) / 2)
     y: Math.round((Screen.height - height) / 2)
 
-    property int revealIndex: 0
-
-    function startReveal() {
-        for (var i = 0; i < lm.count; ++i) {
-            lm.set(i, {"shown": false})
-        }
-        revealIndex = 0
-        if (revealTimer.running) revealTimer.stop()
-        revealTimer.start()
-    }
-
-    function resetReveal() {
-        revealTimer.stop()
-        revealIndex = 0
-        for (var i = 0; i < lm.count; ++i) lm.set(i, {"shown": false})
-    }
-
     Rectangle {
         radius: 30
         width: parent.width
@@ -69,9 +52,9 @@ Window {
 
                 onTextEdited: {
                     if (searchbar.text !== "") {
-                        startReveal()
+                        searchResults.startReveal()
                     } else {
-                        resetReveal()
+                        searchResults.resetReveal()
                     }
                 }
             }
@@ -84,6 +67,7 @@ Window {
                 Layout.rightMargin: 10
 
                 visible: searchbar.text !== ""
+                color: "black"
 
                 onVisibleChanged: {
                     if (visible) {
@@ -99,8 +83,6 @@ Window {
                         easing.type: Easing.InOutQuad
                     }
                 }
-
-                color: "black"
             }
 
             ListModel {
@@ -114,23 +96,10 @@ Window {
                 ListElement { text: "text"; shown: false }
             }
 
-            Timer {
-                id: revealTimer
-                interval: 120
-                repeat: true
-                running: false
-                onTriggered: {
-                    if (revealIndex < lm.count) {
-                        lm.set(revealIndex, {"shown": true})
-                        revealIndex++
-                    } else {
-                        revealTimer.stop()
-                    }
-                }
-            }
 
+            SearchResultsView {
+                id: searchResults
 
-            ListView {
                 Layout.preferredHeight: 200
                 Layout.minimumWidth: root.width - 20
                 Layout.leftMargin: 10
@@ -138,16 +107,7 @@ Window {
                 Layout.topMargin: 10
 
                 visible: searchbar.text !== ""
-                flickDeceleration: 2000
-
-                model: lm
-                clip: true
-                spacing: 10
-
-                ScrollBar.vertical: ScrollBar {
-                    parent: parent
-                    anchors.right: parent.right
-                }
+                view.model: lm
 
                 delegate: Rectangle {
                     implicitWidth: root.width
