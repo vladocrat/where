@@ -1,0 +1,10 @@
+[
+{
+	"name" : "Everything",
+	"dll" : "everything.dll"
+},
+{
+	"name": "Test",
+	"dll" : "test.dll"
+}
+]

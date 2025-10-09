@@ -15,6 +15,7 @@ qt_standard_project_setup(REQUIRES 6.5)
 
 add_subdirectory(src/core)
 add_subdirectory(src/frontend)
+add_subdirectory(src/backends)
 include(3rd_party/LoadDependancies.cmake)
 
 file(GLOB SOURCES CONFIGURE_DEPENDS *.cpp)
@@ -54,6 +55,7 @@ target_link_libraries(where
     Qt6::Svg
     core
     frontend
+    backends
     nlohmann_json::nlohmann_json
 )
 

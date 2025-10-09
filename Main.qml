@@ -18,7 +18,6 @@ Window {
         radius: 30
         width: parent.width
         height: column.implicitHeight
-        //color: "transparent"
 
         Behavior on height {
             NumberAnimation {

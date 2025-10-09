@@ -2,6 +2,9 @@
 
 #include <QQmlApplicationEngine>
 
+#include <backends/BackendEnumerator.hpp>
+#include <backends/BackendInfo.hpp>
+
 namespace Where
 {
 
@@ -14,7 +17,15 @@ ApplicationController::ApplicationController(int& argc, char** argv)
     : QGuiApplication(argc, argv)
     , _impl{std::make_unique<Impl>()}
 {
+    const auto backends = BackendEnumerator::enumerate(std::filesystem::current_path() / "backends.json");
 
+    if (!backends) {
+        qDebug() << "Failed to open backends file";
+    }
+
+    for (const auto& b : backends.value()) {
+        qDebug() << b.name;
+    }
 }
 
 ApplicationController::~ApplicationController()
