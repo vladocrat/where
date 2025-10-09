@@ -4,6 +4,8 @@
 
 #include <backends/BackendEnumerator.hpp>
 #include <backends/BackendInfo.hpp>
+#include <backends/BackendLibrary.hpp>
+#include <backends/Backend.hpp>
 
 namespace Where
 {
@@ -26,6 +28,16 @@ ApplicationController::ApplicationController(int& argc, char** argv)
     for (const auto& b : backends.value()) {
         qDebug() << b.name;
     }
+
+    BackendLibrary lib;
+    qDebug() << backends.value()[0].dllLocation.string().c_str();
+
+    if (!lib.load(backends.value()[0])) {
+        qDebug() << ":(";
+    }
+
+    auto backend = lib.create();
+    backend->executeTask();
 }
 
 ApplicationController::~ApplicationController()

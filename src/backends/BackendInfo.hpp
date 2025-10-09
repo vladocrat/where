@@ -9,8 +9,8 @@ namespace Where
 
 struct BackendInfo
 {
-    std::filesystem::path dllLocation;
     std::string name;
+    std::filesystem::path dllLocation;
 
     nlohmann::json toJson() const noexcept;
 

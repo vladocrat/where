@@ -1,15 +1,9 @@
 #pragma once
 
-#ifdef BUILDING_DLL
-#  define API_EXPORT __declspec(dllexport)
-#else
-#  define API_EXPORT __declspec(dllimport)
-#endif
-
-class API_EXPORT Backend
+class Backend
 {
 public:
-    Backend();
+    virtual void executeTask() = 0;
+    virtual ~Backend() = default;
 };
 
-extern "C" API_EXPORT Backend* create_instance();

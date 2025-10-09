@@ -7,6 +7,7 @@
 #include "BackendInfo.hpp"
 #include "Backend.hpp"
 
+
 namespace Where
 {
 
@@ -57,6 +58,11 @@ bool BackendLibrary::load(const BackendInfo& info) noexcept
 #endif
 
     return true;
+}
+
+BackendLibrary::BackendPtr BackendLibrary::create() noexcept
+{
+    return std::move(BackendPtr(_impl->createFunc(), _impl->destroyFunc));
 }
 
 }

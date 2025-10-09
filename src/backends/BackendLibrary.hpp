@@ -19,11 +19,13 @@ class BackendLibrary
 public:
     using CreateFunc = std::function<Backend*()>;
     using DestoryFunc = std::function<void(Backend*)>;
+    using BackendPtr = std::unique_ptr<Backend, DestoryFunc>;
 
     BackendLibrary();
     ~BackendLibrary() noexcept;
 
     bool load(const BackendInfo& info) noexcept;
+    BackendPtr create() noexcept;
 
 private:
     struct Impl;
