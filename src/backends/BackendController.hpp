@@ -17,13 +17,15 @@ class BackendController
     BackendController& operator=(BackendController&&) = delete;
 
 public:
+    using Files = std::vector<Backend::File>;
+
     BackendController();
     ~BackendController() noexcept;
 
     void setCurrentBackend(const size_t ix) noexcept;
     bool loadBackends() noexcept;
     size_t backendsCount() const noexcept;
-    std::optional<Backend::SearchResult> search(const std::string&) noexcept;
+    std::optional<Files> search(const std::string&) noexcept;
 
 private:
     struct Impl;

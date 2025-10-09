@@ -65,13 +65,22 @@ size_t BackendController::backendsCount() const noexcept
     return _impl->backends.size();
 }
 
-std::optional<Backend::SearchResult> BackendController::search(const std::string& query) noexcept
+std::optional<BackendController::Files> BackendController::search(const std::string& query) noexcept
 {
     if (_impl->backends.empty() && !(_impl->currentIx > _impl->backends.size())) {
         return std::nullopt;
     }
 
-    return _impl->backends[_impl->currentIx].ptr->search(query);
+    const auto searchResult = _impl->backends[_impl->currentIx].ptr->search(query);
+
+    Files files;
+    files.reserve(searchResult.size);
+
+    for (size_t i = 0; i < searchResult.size; i++) {
+        files.emplace_back(searchResult.files[i]);
+    }
+
+    return files;
 }
 
 }

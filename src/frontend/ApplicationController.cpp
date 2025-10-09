@@ -8,39 +8,40 @@
 #include <backends/Backend.hpp>
 #include <backends/BackendController.hpp>
 
+#include "SearchController.hpp"
+#include "SearchResultModel.hpp"
+
 namespace Where
 {
 
 struct ApplicationController::Impl
 {
     QQmlApplicationEngine engine;
-    BackendController backend;
+    //SearchController search;
+    //SearchResultModel model;
 };
 
 ApplicationController::ApplicationController(int& argc, char** argv)
     : QGuiApplication(argc, argv)
     , _impl{std::make_unique<Impl>()}
 {
-    const auto backends = BackendEnumerator::enumerate(std::filesystem::current_path() / "backends.json");
+    SearchController::registerType();
+    SearchResultModel::registerType();
 
-    if (!backends) {
-        qDebug() << "Failed to open backends file";
-    }
+    //_impl->engine.setObjectOwnership(&_impl->search, QQmlEngine::CppOwnership);
+    //_impl->engine.setObjectOwnership(&_impl->model, QQmlEngine::CppOwnership);
 
-    for (const auto& b : backends.value()) {
-        qDebug() << b.name;
-    }
+    QObject::connect(SearchController::instance(), &SearchController::searchFinished, this, [this](const auto& files) {
+        qDebug() << files.size();
 
-    qDebug() << _impl->backend.backendsCount();
-    const auto results = _impl->backend.search("logs");
+        //_impl->model.setData(files);
+        SearchResultModel::instance()->setData(files);
+    });
 
-    if (!results) {
-        qDebug() << "Failed to fetch res";
-    }
 
-    for (size_t i = 0; i < results.value().size; i++) {
-        qDebug() <<  results.value().files[i].fileName <<  results.value().files[i].fullFilePath.string();
-    }
+    QObject::connect(SearchController::instance(), &SearchController::clear, this, [this]() {
+        SearchResultModel::instance()->clear();
+    });
 }
 
 ApplicationController::~ApplicationController()

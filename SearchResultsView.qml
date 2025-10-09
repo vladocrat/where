@@ -11,6 +11,7 @@ Item {
         id: internal
 
         property int revealIndex: 0
+        property var revealedIndices: []
     }
 
     Timer {
@@ -22,7 +23,7 @@ Item {
 
         onTriggered: {
             if (internal.revealIndex < view.model.count) {
-                view.model.set(internal.revealIndex, {"shown": true})
+                internal.revealedIndices.push(internal.revealIndex)
                 internal.revealIndex++
             } else {
                 revealTimer.stop()

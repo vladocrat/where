@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import SearchController
+import SearchResultModel
 
 Window {
     id: root
@@ -50,11 +52,12 @@ Window {
                 menuSettingsIconSource: "qrc:/icons/vertical_menu.svg"
 
                 onTextEdited: {
-                    if (searchbar.text !== "") {
-                        searchResults.startReveal()
-                    } else {
-                        searchResults.resetReveal()
+                    if (searchbar.text === "") {
+                        SearchController.clear();
+                        return;
                     }
+
+                    SearchController.search(searchbar.text);
                 }
             }
 
@@ -62,19 +65,19 @@ Window {
                 Layout.minimumWidth: root.width - 20
                 Layout.maximumHeight: 1
                 Layout.minimumHeight: 1
+                Layout.preferredWidth: {
+                    if (visible) {
+                        return root.width - 20;
+                    } else {
+                        return 0;
+                    }
+                }
+
                 Layout.leftMargin: 10
                 Layout.rightMargin: 10
 
-                visible: searchbar.text !== ""
+                visible: searchbar.text !== "" && searchResults.view.count !== 0
                 color: "black"
-
-                onVisibleChanged: {
-                    if (visible) {
-                        width = root.width - 20;
-                    } else {
-                        width = 0;
-                    }
-                }
 
                 Behavior on width {
                     NumberAnimation {
@@ -84,18 +87,6 @@ Window {
                 }
             }
 
-            ListModel {
-                id: lm
-
-                ListElement { text: "text"; shown: false }
-                ListElement { text: "text"; shown: false }
-                ListElement { text: "text"; shown: false }
-                ListElement { text: "text"; shown: false }
-                ListElement { text: "text"; shown: false }
-                ListElement { text: "text"; shown: false }
-            }
-
-
             SearchResultsView {
                 id: searchResults
 
@@ -104,19 +95,70 @@ Window {
                 Layout.leftMargin: 10
                 Layout.rightMargin: 10
                 Layout.topMargin: 10
+                Layout.bottomMargin: 10
 
-                visible: searchbar.text !== ""
-                view.model: lm
+                visible: searchbar.text !== "" && searchResults.view.count !== 0
+                view.model: SearchResultModel
+                view.spacing: 0
 
-                delegate: Rectangle {
-                    implicitWidth: root.width
-                    implicitHeight: 20
-                    color: "red"
-                    opacity: model.shown ? 1.0 : 0.0
-                    scale: model.shown ? 1.0 : 0.5
+                delegate: Item {
+                    implicitWidth: root.width - 20
+                    implicitHeight: 30
 
-                    Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-                    Behavior on scale { NumberAnimation { duration: 120; easing.type: Easing.OutQuad } }
+                    ColumnLayout {
+                        anchors.fill: parent
+
+                        spacing: 0
+
+                        Rectangle {
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+
+                            //color: "red"
+                            opacity: true ? 1.0 : 0.0
+                            scale: true ? 1.0 : 0.5
+
+                            RowLayout {
+                                anchors.fill: parent
+
+                                Text {
+                                    text: fileName
+                                }
+
+                                Text {
+                                    text: filePath
+                                }
+                            }
+
+                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+                            Behavior on scale { NumberAnimation { duration: 120; easing.type: Easing.OutQuad } }
+                        }
+
+                        Rectangle {
+                            Layout.minimumWidth: parent.width
+                            Layout.maximumHeight: 1
+                            Layout.minimumHeight: 1
+
+                            visible: searchbar.text !== ""
+                            color: "black"
+                            opacity: 0.3
+
+                            onVisibleChanged: {
+                                if (visible) {
+                                    width = parent.width - 20;
+                                } else {
+                                    width = 0;
+                                }
+                            }
+
+                            Behavior on width {
+                                NumberAnimation {
+                                    duration: 200
+                                    easing.type: Easing.InOutQuad
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
