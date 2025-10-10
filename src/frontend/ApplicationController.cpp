@@ -2,16 +2,9 @@
 
 #include <QQmlApplicationEngine>
 
-#include <backends/BackendEnumerator.hpp>
-#include <backends/BackendInfo.hpp>
-#include <backends/BackendLibrary.hpp>
-#include <backends/Backend.hpp>
-#include <backends/BackendController.hpp>
-
 #include "SearchController.hpp"
 #include "SearchResultModel.hpp"
-#include "BackendsModel.hpp"
-#include "backends/BackendEnumerator.hpp"
+#include "ModelController.hpp"
 
 namespace Where
 {
@@ -19,34 +12,30 @@ namespace Where
 struct ApplicationController::Impl
 {
     QQmlApplicationEngine engine;
-    //SearchController search;
-    //SearchResultModel model;
+    ModelController modelController;
 };
 
 ApplicationController::ApplicationController(int& argc, char** argv)
     : QGuiApplication(argc, argv)
     , _impl{std::make_unique<Impl>()}
 {
-    SearchController::registerType();
-    SearchResultModel::registerType();
-    BackendsModel::registerType();
+    qmlRegisterSingletonType<ModelController>("ModelController", 1, 0, "ModelController", [this](QQmlEngine*, QJSEngine*) -> QObject* {
+        return &_impl->modelController;
+    });
 
-    //_impl->engine.setObjectOwnership(&_impl->search, QQmlEngine::CppOwnership);
-    //_impl->engine.setObjectOwnership(&_impl->model, QQmlEngine::CppOwnership);
+    SearchController::registerType();
+
+    _impl->engine.setObjectOwnership(_impl->modelController.searchResultModel(), QQmlEngine::CppOwnership);
+    _impl->engine.setObjectOwnership(_impl->modelController.backendsModel(), QQmlEngine::CppOwnership);
 
     QObject::connect(SearchController::instance(), &SearchController::searchFinished, this, [this](const auto& files) {
         qDebug() << files.size();
-
-        //_impl->model.setData(files);
-        SearchResultModel::instance()->setData(files);
+        _impl->modelController.searchResultModel()->setData(files);
     });
 
     QObject::connect(SearchController::instance(), &SearchController::clear, this, [this]() {
-        SearchResultModel::instance()->clear();
+        _impl->modelController.searchResultModel()->clear();
     });
-
-    const auto list = Where::BackendEnumerator::enumerate(std::filesystem::current_path() / "backends.json");
-    BackendsModel::instance()->setData(list.value());
 }
 
 ApplicationController::~ApplicationController()

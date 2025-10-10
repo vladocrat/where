@@ -1,9 +1,9 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+
 import SearchController
-import SearchResultModel
-import BackendsModel
+import ModelController
 
 Window {
     id: root
@@ -99,7 +99,7 @@ Window {
 
                 visible: searchbar.settingsToggled
 
-                backendsModel: BackendsModel
+                backendsModel: ModelController.backendsModel
             }
 
             SearchResultsView {
@@ -113,7 +113,7 @@ Window {
                 Layout.bottomMargin: 10
 
                 visible: searchbar.text !== "" && searchResults.view.count !== 0 && !searchbar.settingsToggled
-                view.model: SearchResultModel
+                view.model: ModelController.searchResultModel
                 view.spacing: 10
 
                 delegate: SearchResultDelegate {

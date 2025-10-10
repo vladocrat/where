@@ -54,5 +54,5 @@ void BackendsModel::setData(const std::vector<Where::BackendInfo>& vec) noexcept
 
 void BackendsModel::registerType()
 {
-    qmlRegisterSingletonInstance<BackendsModel>("BackendsModel", 1, 0, "BackendsModel", BackendsModel::instance());
+    qmlRegisterUncreatableType<BackendsModel>("BackendsModel", 1, 0, "BackendsModel", "Use from C++");
 }

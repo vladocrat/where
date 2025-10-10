@@ -57,5 +57,5 @@ void SearchResultModel::setData(const std::vector<Backend::File>& searchResults)
 
 void SearchResultModel::registerType()
 {
-    qmlRegisterSingletonInstance<SearchResultModel>("SearchResultModel", 1, 0, "SearchResultModel", SearchResultModel::instance());
+    qmlRegisterUncreatableType<SearchResultModel>("SearchResultModel", 1, 0, "SearchResultModel", "Use from C++");
 }
