@@ -14,8 +14,9 @@ public:
     }
 
     enum class Role {
-        FileNameRole = Qt::UserRole + 1,
-        FilePathRole
+        FileName = Qt::UserRole + 1,
+        FilePath,
+        IsFolder
     };
     Q_ENUM(Role)
 

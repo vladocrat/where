@@ -17,8 +17,9 @@ QVariant SearchResultModel::data(const QModelIndex &index, int role) const
     const auto& result = _results.at(index.row());
 
     switch (static_cast<SearchResultModel::Role>(role)) {
-    case SearchResultModel::Role::FileNameRole: return QString::fromStdWString(result.fileName);
-    case SearchResultModel::Role::FilePathRole:  return QString::fromStdWString(result.fullFilePath.wstring());
+    case SearchResultModel::Role::FileName: return QString::fromStdWString(result.fileName);
+    case SearchResultModel::Role::FilePath: return QString::fromStdWString(result.fullFilePath.wstring());
+    case SearchResultModel::Role::IsFolder: return result.isFolder;
     default: return {};
     }
 }
@@ -26,8 +27,9 @@ QVariant SearchResultModel::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> SearchResultModel::roleNames() const
 {
     return {
-        { static_cast<int>(SearchResultModel::Role::FileNameRole), "fileName" },
-        { static_cast<int>(SearchResultModel::Role::FilePathRole), "filePath" }
+        { static_cast<int>(SearchResultModel::Role::FileName), "fileName" },
+        { static_cast<int>(SearchResultModel::Role::FilePath), "filePath" },
+        { static_cast<int>(SearchResultModel::Role::IsFolder), "isFolder" }
     };
 }
 

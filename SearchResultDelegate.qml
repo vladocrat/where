@@ -7,6 +7,7 @@ Item {
 
     required property string fileName
     required property string filePath
+    required property bool isFolder
 
     signal openRequested(var filePath);
     signal copyPath(var filePath);
@@ -35,7 +36,7 @@ Item {
                 fillMode: Image.PreserveAspectFit
                 smooth: true
 
-                source: "qrc:/icons/file.svg"
+                source: root.isFolder ? "qrc:/icons/folder.svg" : "qrc:/icons/file.svg"
             }
 
             ColumnLayout {

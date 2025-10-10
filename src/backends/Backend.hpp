@@ -10,6 +10,7 @@ public:
     {
         std::wstring fileName;
         std::filesystem::path fullFilePath;
+        bool isFolder;
     };
 
     struct SearchResult
