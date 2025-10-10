@@ -12,6 +12,14 @@ Item {
     readonly property alias settingsToggled: menuSettingsBtn.toggled
 
     signal textEdited();
+    signal focusOnResults();
+
+    onFocusChanged: {
+        if (root.focus) {
+            root.focus = false;
+            searchbar.focus = true;
+        }
+    }
 
     RowLayout {
         anchors.fill: parent
@@ -54,6 +62,12 @@ Item {
 
             onTextEdited: {
                 root.textEdited();
+            }
+
+            Keys.onPressed: function(event) {
+                if (event.key === Qt.Key_Down) {
+                    root.focusOnResults();
+                }
             }
         }
 

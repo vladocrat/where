@@ -74,6 +74,12 @@ Window {
 
                     SearchController.search(searchbar.text);
                 }
+
+                onFocusOnResults: {
+                    if (searchResults.visible) {
+                        searchResults.focus = true;
+                    }
+                }
             }
 
             Rectangle {
@@ -126,9 +132,18 @@ Window {
                 Layout.topMargin: 10
                 Layout.bottomMargin: 10
 
-                visible: searchbar.text !== "" && searchResults.view.count !== 0 && !searchbar.settingsToggled
+                visible: searchbar.text !== "" && !searchbar.settingsToggled
                 view.model: ModelController.searchResultModel
                 view.spacing: 10
+
+                onLoseFocus: {
+                    searchResults.focus = false;
+                    searchbar.focus = true;
+                }
+
+                onOpen: function(currentItem) {
+                    currentItem.openRequested(currentItem.filePath + "/" + currentItem.fileName);
+                }
 
                 delegate: SearchResultDelegate {
                     implicitWidth: root.width - 20
