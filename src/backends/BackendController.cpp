@@ -65,7 +65,7 @@ size_t BackendController::backendsCount() const noexcept
     return _impl->backends.size();
 }
 
-std::optional<BackendController::Files> BackendController::search(const std::string& query) noexcept
+std::optional<BackendController::Files> BackendController::search(const std::wstring& query) noexcept
 {
     if (_impl->backends.empty() && !(_impl->currentIx > _impl->backends.size())) {
         return std::nullopt;

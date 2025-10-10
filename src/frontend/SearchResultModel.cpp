@@ -17,8 +17,8 @@ QVariant SearchResultModel::data(const QModelIndex &index, int role) const
     const auto& result = _results.at(index.row());
 
     switch (static_cast<SearchResultModel::Role>(role)) {
-    case SearchResultModel::Role::FileNameRole: return QString::fromStdString(result.fileName);
-    case SearchResultModel::Role::FilePathRole:  return QString::fromStdString(result.fullFilePath.string());
+    case SearchResultModel::Role::FileNameRole: return QString::fromStdWString(result.fileName);
+    case SearchResultModel::Role::FilePathRole:  return QString::fromStdWString(result.fullFilePath.wstring());
     default: return {};
     }
 }

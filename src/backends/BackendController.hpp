@@ -25,7 +25,7 @@ public:
     void setCurrentBackend(const size_t ix) noexcept;
     bool loadBackends() noexcept;
     size_t backendsCount() const noexcept;
-    std::optional<Files> search(const std::string&) noexcept;
+    std::optional<Files> search(const std::wstring&) noexcept;
 
 private:
     struct Impl;

@@ -9,7 +9,7 @@ SearchController::SearchController()
 
 void SearchController::search(const QString& query)
 {
-    const auto res = backend.search(query.toStdString());
+    const auto res = backend.search(query.toStdWString());
 
     if (!res) {
         emit error();

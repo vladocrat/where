@@ -8,7 +8,7 @@ class Backend
 public:
     struct File
     {
-        std::string fileName;
+        std::wstring fileName;
         std::filesystem::path fullFilePath;
     };
 
@@ -18,7 +18,7 @@ public:
         File* files;
     };
 
-    virtual SearchResult search(const std::string&) = 0;
+    virtual SearchResult search(const std::wstring&) = 0;
     virtual ~Backend() = default;
 };
 
