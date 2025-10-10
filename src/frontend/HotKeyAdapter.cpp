@@ -17,6 +17,7 @@ HotKeyAdapter::HotKeyAdapter()
     QObject::connect(qApp, &QCoreApplication::aboutToQuit, &_impl->thread, &QThread::quit, Qt::QueuedConnection);
     QObject::connect(&_impl->worker, &HotKeyHandlerWorker::finished, &_impl->thread, &QThread::quit, Qt::QueuedConnection);
     QObject::connect(&_impl->thread, &QThread::started, &_impl->worker, &HotKeyHandlerWorker::run, Qt::QueuedConnection);
+    QObject::connect(&_impl->worker, &HotKeyHandlerWorker::actionTriggered, this, &HotKeyAdapter::actionTriggered, Qt::QueuedConnection);
 }
 
 HotKeyAdapter::~HotKeyAdapter()

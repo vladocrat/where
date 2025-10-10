@@ -43,6 +43,7 @@ Item {
             Layout.fillWidth: true
             Layout.margins: 10
 
+            focus: root.visible
             placeholderText: "Where is..."
 
             background: Rectangle {

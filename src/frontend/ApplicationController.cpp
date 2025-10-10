@@ -5,6 +5,7 @@
 #include "SearchController.hpp"
 #include "SearchResultModel.hpp"
 #include "ModelController.hpp"
+#include "HotKeyController.hpp"
 
 namespace Where
 {
@@ -13,6 +14,7 @@ struct ApplicationController::Impl
 {
     QQmlApplicationEngine engine;
     ModelController modelController;
+    HotKeyController hotkeyController;
 };
 
 ApplicationController::ApplicationController(int& argc, char** argv)
@@ -21,6 +23,10 @@ ApplicationController::ApplicationController(int& argc, char** argv)
 {
     qmlRegisterSingletonType<ModelController>("ModelController", 1, 0, "ModelController", [this](QQmlEngine*, QJSEngine*) -> QObject* {
         return &_impl->modelController;
+    });
+
+    qmlRegisterSingletonType<HotKeyController>("HotKeyController", 1, 0, "HotKeyController", [this](QQmlEngine*, QJSEngine*) -> QObject* {
+        return &_impl->hotkeyController;
     });
 
     SearchController::registerType();

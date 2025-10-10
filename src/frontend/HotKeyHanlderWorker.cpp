@@ -10,7 +10,7 @@
 
 struct HotKeyHandlerWorker::Impl
 {
-    Where::HotKey::HotKeyHandler handler;
+    std::unique_ptr<Where::HotKey::HotKeyHandler> handler;
 };
 
 HotKeyHandlerWorker::HotKeyHandlerWorker()
@@ -21,26 +21,28 @@ HotKeyHandlerWorker::HotKeyHandlerWorker()
 
 HotKeyHandlerWorker::~HotKeyHandlerWorker()
 {
+
 }
 
 void HotKeyHandlerWorker::run()
 {
+    _impl->handler = std::make_unique<Where::HotKey::HotKeyHandler>();
     Where::HotKey::HotKeyEntry entry;
     entry.action = Where::HotKey::Action::SHOW_SEARCH_BAR;
-   // entry.key = VK_F1;
+    entry.key = VK_F1;
     entry.mode = Where::HotKey::Mode::NO_REPEAT;
     qDebug() << "starting";
-    qDebug() << _impl->handler.setHandler(entry, []() {
-        qDebug() << "Hello!";
+    qDebug() << _impl->handler->setHandler(entry, [this, action = entry.action]() {
+        emit actionTriggered(action);
     });
 
-    _impl->handler.start();
+    _impl->handler->start();
 }
 
 void HotKeyHandlerWorker::stop()
 {
     qDebug() << "stopping";
-    _impl->handler.stop();
+    _impl->handler->stop();
     emit finished();
 }
 

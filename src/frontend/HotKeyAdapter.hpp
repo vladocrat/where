@@ -2,6 +2,11 @@
 
 #include <QObject>
 
+namespace Where::HotKey
+{
+enum class Action;
+}
+
 class HotKeyAdapter : public QObject
 {
     Q_OBJECT
@@ -11,6 +16,9 @@ public:
     ~HotKeyAdapter();
 
     void start();
+
+signals:
+    void actionTriggered(const Where::HotKey::Action);
 
 private:
     struct Impl;

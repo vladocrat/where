@@ -2,6 +2,14 @@
 
 #include <QObject>
 
+namespace Where
+{
+namespace HotKey
+{
+enum class Action;
+}
+}
+
 class HotKeyHandlerWorker : public QObject
 {
     Q_OBJECT
@@ -14,6 +22,7 @@ public slots:
     void stop();
 
 signals:
+    void actionTriggered(const Where::HotKey::Action);
     void finished();
 
 private:

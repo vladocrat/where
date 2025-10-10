@@ -23,8 +23,7 @@ enum class Mode
 enum class Action
 {
     NONE = 0,
-    SHOW_SEARCH_BAR,
-    HIDE_SEARCH_BAR
+    SHOW_SEARCH_BAR
 };
 
 struct HotKeyEntry

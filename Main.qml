@@ -4,6 +4,7 @@ import QtQuick.Controls
 
 import SearchController
 import ModelController
+import HotKeyController
 
 Window {
     id: root
@@ -16,6 +17,19 @@ Window {
 
     x: Math.round((Screen.width - width) / 2)
     y: Math.round((Screen.height - height) / 2)
+
+    Connections {
+        target: HotKeyController
+
+        function onShowSearchBar() {
+            if (root.visible) {
+                root.hide();
+                return;
+            }
+
+            root.show();
+        }
+    }
 
     Rectangle {
         radius: 30
