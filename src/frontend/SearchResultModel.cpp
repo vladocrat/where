@@ -44,15 +44,15 @@ void SearchResultModel::setData(const std::vector<Backend::File>& searchResults)
         return;
     }
 
-    beginResetModel();
-
     _results.clear();
+
+    beginInsertRows(QModelIndex(), 0, 0);
 
     for (const auto& file : searchResults) {
         _results.push_back(file);
     }
 
-    endResetModel();
+    endInsertRows();
 }
 
 void SearchResultModel::registerType()

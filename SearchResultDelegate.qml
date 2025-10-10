@@ -9,24 +9,18 @@ Item {
     required property string filePath
 
     signal openRequested(var filePath);
+    signal copyPath(var filePath);
 
     Rectangle {
         anchors.fill: parent
 
-        opacity: visible ? 1.0 : 0.0
-        scale: visible ? 1.0 : 0.5
         color: mouseArea.containsMouse ? "#d6b6b6" : "white"
-
-        Behavior on opacity {
-            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
-        }
-
-        Behavior on scale {
-            NumberAnimation { duration: 120; easing.type: Easing.OutQuad }
-        }
+        radius: 10
 
         RowLayout {
             anchors.fill: parent
+
+            spacing: 7
 
             Image {
                 Layout.fillHeight: true
@@ -50,6 +44,9 @@ Item {
                 Layout.alignment: Qt.AlignLeft
 
                 Text {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+
                     horizontalAlignment: Text.AlignLeft
 
                     text: root.fileName
@@ -57,11 +54,46 @@ Item {
                 }
 
                 Text {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+
                     horizontalAlignment: Text.AlignLeft
 
                     text: root.filePath
                     font.pointSize: 8
                 }
+            }
+        }
+    }
+
+    Menu {
+        id: contextMenu
+
+        MenuItem {
+            text: "Open file location"
+
+            background: Rectangle {
+                required property bool hovered
+
+                color: parent.highlighted ? "#d6b6b6" : "white"
+            }
+
+            onTriggered: {
+                root.openRequested(root.filePath);
+            }
+        }
+
+        MenuItem {
+            text: "Copy file path"
+
+            background: Rectangle {
+                required property bool hovered
+
+                color: parent.highlighted ? "#d6b6b6" : "white"
+            }
+
+            onTriggered: {
+                root.copyPath(root.filePath + "/" + root.fileName);
             }
         }
     }
@@ -72,8 +104,15 @@ Item {
         anchors.fill: parent
 
         hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-        onClicked: {
+        onClicked: function(mouse) {
+            if (mouse.button === Qt.RightButton) {
+                contextMenu.popup(mouse.x, mouse.y);
+                return;
+            }
+
             root.openRequested(root.filePath + "/" + root.fileName);
         }
     }

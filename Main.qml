@@ -90,7 +90,7 @@ Window {
             SearchResultsView {
                 id: searchResults
 
-                Layout.preferredHeight: 200
+                Layout.preferredHeight: root.height - searchbar.height - 20
                 Layout.minimumWidth: root.width - 20
                 Layout.leftMargin: 10
                 Layout.rightMargin: 10
@@ -107,6 +107,10 @@ Window {
 
                     onOpenRequested: function (filePath){
                         SearchController.open(filePath);
+                    }
+
+                    onCopyPath: function(filePath) {
+                        SearchController.copy(filePath);
                     }
                 }
             }
