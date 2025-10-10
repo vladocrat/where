@@ -5,6 +5,7 @@ Button {
     id: root
 
     property alias imgSource: img.source
+    readonly property alias backgroundComponent: backgroundComp
 
     contentItem: Image {
         id: img
@@ -20,6 +21,10 @@ Button {
     }
 
     background: Rectangle {
+        id: backgroundComp
+
+        readonly property bool containsMouse: mouseArea.containsMouse
+
         anchors.fill: parent
         anchors.topMargin: 10
         anchors.bottomMargin: 10

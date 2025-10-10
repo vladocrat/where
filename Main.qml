@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import SearchController
 import SearchResultModel
+import BackendsModel
 
 Window {
     id: root
@@ -49,7 +50,7 @@ Window {
 
                 searchIconSource: "qrc:/icons/search_icon.svg"
                 clearSearchIconSource: "qrc:/icons/cross.svg"
-                menuSettingsIconSource: "qrc:/icons/vertical_menu.svg"
+                menuSettingsIconSource: "qrc:/icons/gear.svg"
 
                 onTextEdited: {
                     if (searchbar.text === "") {
@@ -62,10 +63,12 @@ Window {
             }
 
             Rectangle {
-                Layout.minimumWidth: root.width - 20
                 Layout.maximumHeight: 1
                 Layout.minimumHeight: 1
-                Layout.preferredWidth: {
+                Layout.leftMargin: 10
+                Layout.rightMargin: 10
+
+                width: {
                     if (visible) {
                         return root.width - 20;
                     } else {
@@ -73,10 +76,7 @@ Window {
                     }
                 }
 
-                Layout.leftMargin: 10
-                Layout.rightMargin: 10
-
-                visible: searchbar.text !== "" && searchResults.view.count !== 0
+                visible: settings.visible || searchResults.visible
                 color: "black"
 
                 Behavior on width {
@@ -85,6 +85,21 @@ Window {
                         easing.type: Easing.InOutQuad
                     }
                 }
+            }
+
+            SettingsView {
+                id: settings
+
+                Layout.preferredHeight: root.height - searchbar.height - 20
+                Layout.minimumWidth: root.width - 20
+                Layout.leftMargin: 10
+                Layout.rightMargin: 10
+                Layout.topMargin: 10
+                Layout.bottomMargin: 10
+
+                visible: searchbar.settingsToggled
+
+                backendsModel: BackendsModel
             }
 
             SearchResultsView {
@@ -97,7 +112,7 @@ Window {
                 Layout.topMargin: 10
                 Layout.bottomMargin: 10
 
-                visible: searchbar.text !== "" && searchResults.view.count !== 0
+                visible: searchbar.text !== "" && searchResults.view.count !== 0 && !searchbar.settingsToggled
                 view.model: SearchResultModel
                 view.spacing: 10
 

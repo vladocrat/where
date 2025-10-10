@@ -10,6 +10,8 @@
 
 #include "SearchController.hpp"
 #include "SearchResultModel.hpp"
+#include "BackendsModel.hpp"
+#include "backends/BackendEnumerator.hpp"
 
 namespace Where
 {
@@ -27,6 +29,7 @@ ApplicationController::ApplicationController(int& argc, char** argv)
 {
     SearchController::registerType();
     SearchResultModel::registerType();
+    BackendsModel::registerType();
 
     //_impl->engine.setObjectOwnership(&_impl->search, QQmlEngine::CppOwnership);
     //_impl->engine.setObjectOwnership(&_impl->model, QQmlEngine::CppOwnership);
@@ -38,10 +41,12 @@ ApplicationController::ApplicationController(int& argc, char** argv)
         SearchResultModel::instance()->setData(files);
     });
 
-
     QObject::connect(SearchController::instance(), &SearchController::clear, this, [this]() {
         SearchResultModel::instance()->clear();
     });
+
+    const auto list = Where::BackendEnumerator::enumerate(std::filesystem::current_path() / "backends.json");
+    BackendsModel::instance()->setData(list.value());
 }
 
 ApplicationController::~ApplicationController()

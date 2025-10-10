@@ -4,5 +4,6 @@
         <file>icons/cross.svg</file>
         <file>icons/vertical_menu.svg</file>
         <file>icons/file.svg</file>
+        <file>icons/gear.svg</file>
     </qresource>
 </RCC>

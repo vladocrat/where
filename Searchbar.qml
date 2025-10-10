@@ -9,9 +9,9 @@ Item {
     property alias searchIconSource: searchIcon.source
     property alias clearSearchIconSource: clearSerachBtn.imgSource
     property alias menuSettingsIconSource: menuSettingsBtn.imgSource
+    readonly property alias settingsToggled: menuSettingsBtn.toggled
 
     signal textEdited();
-    signal openSettings();
 
     RowLayout {
         anchors.fill: parent
@@ -72,7 +72,7 @@ Item {
             }
         }
 
-        WhereButton {
+        WhereToggleButton {
             id: menuSettingsBtn
 
             Layout.fillHeight: true
@@ -80,10 +80,6 @@ Item {
             Layout.rightMargin: 15
             Layout.maximumWidth: 30
             Layout.minimumWidth: 30
-
-            onClicked: {
-                root.openSettings();
-            }
         }
     }
 }
