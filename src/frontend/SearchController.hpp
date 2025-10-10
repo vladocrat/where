@@ -19,6 +19,7 @@ public:
 
 public slots:
     void search(const QString& query);
+    void open(const QString& filePath);
 
 signals:
     void clear();

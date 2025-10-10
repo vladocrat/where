@@ -99,65 +99,14 @@ Window {
 
                 visible: searchbar.text !== "" && searchResults.view.count !== 0
                 view.model: SearchResultModel
-                view.spacing: 0
+                view.spacing: 10
 
-                delegate: Item {
+                delegate: SearchResultDelegate {
                     implicitWidth: root.width - 20
-                    implicitHeight: 30
+                    implicitHeight: 45
 
-                    ColumnLayout {
-                        anchors.fill: parent
-
-                        spacing: 0
-
-                        Rectangle {
-                            Layout.fillHeight: true
-                            Layout.fillWidth: true
-
-                            //color: "red"
-                            opacity: true ? 1.0 : 0.0
-                            scale: true ? 1.0 : 0.5
-
-                            RowLayout {
-                                anchors.fill: parent
-
-                                Text {
-                                    text: fileName
-                                }
-
-                                Text {
-                                    text: filePath
-                                }
-                            }
-
-                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-                            Behavior on scale { NumberAnimation { duration: 120; easing.type: Easing.OutQuad } }
-                        }
-
-                        Rectangle {
-                            Layout.minimumWidth: parent.width
-                            Layout.maximumHeight: 1
-                            Layout.minimumHeight: 1
-
-                            visible: searchbar.text !== ""
-                            color: "black"
-                            opacity: 0.3
-
-                            onVisibleChanged: {
-                                if (visible) {
-                                    width = parent.width - 20;
-                                } else {
-                                    width = 0;
-                                }
-                            }
-
-                            Behavior on width {
-                                NumberAnimation {
-                                    duration: 200
-                                    easing.type: Easing.InOutQuad
-                                }
-                            }
-                        }
+                    onOpenRequested: function (filePath){
+                        SearchController.open(filePath);
                     }
                 }
             }

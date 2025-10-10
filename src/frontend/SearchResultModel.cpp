@@ -46,6 +46,8 @@ void SearchResultModel::setData(const std::vector<Backend::File>& searchResults)
 
     beginResetModel();
 
+    _results.clear();
+
     for (const auto& file : searchResults) {
         _results.push_back(file);
     }

@@ -1,6 +1,7 @@
 #include "SearchController.hpp"
 
 #include <QQmlEngine>
+#include <QDesktopServices>
 
 SearchController::SearchController()
 {
@@ -16,6 +17,11 @@ void SearchController::search(const QString& query)
     }
 
     emit searchFinished(res.value());
+}
+
+void SearchController::open(const QString& filePath)
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
 }
 
 void SearchController::registerType()
