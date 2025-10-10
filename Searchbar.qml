@@ -7,13 +7,14 @@ Item {
 
     property alias text: searchbar.text
     property alias searchIconSource: searchIcon.source
-    property alias clearSearchIconSource: clearSearchIcon.source
-    property alias menuSettingsIconSource: menuSettingsIcon.source
+    property alias clearSearchIconSource: clearSerachBtn.imgSource
+    property alias menuSettingsIconSource: menuSettingsBtn.imgSource
 
     signal textEdited();
+    signal openSettings();
 
     RowLayout {
-       anchors.fill: parent
+        anchors.fill: parent
 
         Image {
             id: searchIcon
@@ -55,26 +56,24 @@ Item {
             }
         }
 
-        Image {
-            id: clearSearchIcon
+        WhereButton {
+            id: clearSerachBtn
 
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.maximumWidth: 30
             Layout.minimumWidth: 30
 
-            sourceSize.height: 512
-            sourceSize.width: 512
-            antialiasing: true
+            imgSource: root.searchIconSource
+            visible: searchbar.text !== ""
 
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-
-            visible: clearSearchIcon.status === Image.Ready && searchbar.text !== ""
+            onClicked: {
+                searchbar.clear();
+            }
         }
 
-        Image {
-            id: menuSettingsIcon
+        WhereButton {
+            id: menuSettingsBtn
 
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -82,14 +81,9 @@ Item {
             Layout.maximumWidth: 30
             Layout.minimumWidth: 30
 
-            sourceSize.height: 512
-            sourceSize.width: 512
-            antialiasing: true
-
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-
-            visible: menuSettingsIcon.status === Image.Ready
+            onClicked: {
+                root.openSettings();
+            }
         }
     }
 }
