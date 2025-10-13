@@ -33,13 +33,13 @@ qt_add_qml_module(where
     URI where
     VERSION 1.0
     QML_FILES
-        Main.qml
-        Searchbar.qml
-        SearchResultsView.qml
-        SearchResultDelegate.qml
-        WhereButton.qml
-        SettingsView.qml
-        WhereToggleButton.qml
+        qml/Main.qml
+        qml/Searchbar.qml
+        qml/SearchResultsView.qml
+        qml/SearchResultDelegate.qml
+        qml/WhereButton.qml
+        qml/SettingsView.qml
+        qml/WhereToggleButton.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
