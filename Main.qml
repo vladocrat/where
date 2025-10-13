@@ -8,7 +8,7 @@ import HotKeyController
 
 Window {
     id: root
-    width: 600
+    width: 700
     height: 400
     visible: true
     color: "transparent"
