@@ -12,7 +12,7 @@ Item {
     StackLayout {
         anchors.fill: parent
 
-        visible: root.currentIndex !== -1
+        visible: root.currentIndex !== -1 && root.group.checkedButton !== null
         currentIndex: root.currentIndex
 
         ColumnLayout {

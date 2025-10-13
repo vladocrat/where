@@ -15,6 +15,10 @@ Item {
                 target: divider
                 height: 0
             }
+            PropertyChanges {
+                target: settingsNav
+                currentIndex: -1
+            }
         },
         State {
             name: "visible"
@@ -24,8 +28,13 @@ Item {
                 height: root.height
             }
         }
-
     ]
+
+    onVisibleChanged: {
+        if (!visible) {
+            settingsNav.buttonGroup.checkedButton = null
+        }
+    }
 
     RowLayout {
         anchors.fill: parent
@@ -61,7 +70,7 @@ Item {
             Behavior on height {
                 NumberAnimation {
                     duration: 500
-                    easing.type: Easing.OutCubic
+                    easing.type: Easing.InOutCubic
                 }
             }
         }

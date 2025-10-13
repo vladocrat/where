@@ -7,7 +7,7 @@ Item {
     id: root
 
     readonly property alias buttonGroup: group
-    property int currentIndex: -1
+    property alias currentIndex: list.currentIndex
 
     ListModel {
         id: settingsModel
@@ -63,6 +63,7 @@ Item {
                     target: list
                     opacity: 0
                     scale: 0.7
+                    currentIndex: 0
                 }
             },
             State {
