@@ -68,7 +68,6 @@ BackendLibrary& BackendLibrary::operator=(BackendLibrary&& other)
 bool BackendLibrary::load(const BackendInfo& info) noexcept
 {
 #ifdef WIN32
-    //! std::filesystem::path::c_str returns w_char_t* instead of c_char_t...
     _impl->dll = LoadLibraryA(info.dllLocation.string().c_str());
 
     if (!_impl->dll) {

@@ -7,5 +7,8 @@
         <file>icons/gear.svg</file>
         <file>icons/folder.svg</file>
         <file>icons/question_mark.svg</file>
+        <file>icons/keyboard.svg</file>
+        <file>icons/palette.svg</file>
+        <file>icons/server.svg</file>
     </qresource>
 </RCC>

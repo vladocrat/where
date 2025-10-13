@@ -5,69 +5,76 @@ import QtQuick.Controls
 Item {
     id: root
 
-    property alias backendsModel: backendsList.model
+    property alias backendsModel: settingsActionView.backendsListModel
+
+    states: [
+        State {
+            name: "hidden"
+            when: !root.visible
+            PropertyChanges {
+                target: divider
+                height: 0
+            }
+        },
+        State {
+            name: "visible"
+            when: root.visible
+            PropertyChanges {
+                target: divider
+                height: root.height
+            }
+        }
+
+    ]
 
     RowLayout {
         anchors.fill: parent
 
         ColumnLayout {
-            id: column
-
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            ButtonGroup {
-                id: settingsGroup
+            SettingsButtonsView {
+                id: settingsNav
 
-                buttons: column.children
-            }
-
-            RadioButton {
-                id: backends
-
-                text: "Backends"
-            }
-
-            RadioButton {
-                id: palette
-
-                text: "Palette"
-            }
-        }
-
-        ColumnLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            Layout.preferredWidth: parent.implicitWidth * 0.7
-
-            visible: backends.checked
-
-            RowLayout {
+                Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true
-                Layout.maximumHeight: 20
-                Layout.minimumHeight: 20
+                Layout.preferredHeight: root.height
+            }
 
-                Text {
-                    text: "Current backend: "
-                }
+            Item {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+        }
 
-                ComboBox {
-                    id: backendsList
+        Rectangle {
+            id: divider
 
-                    delegate: Text {
-                        text: name
-                    }
+            Layout.fillHeight: true
+            Layout.maximumWidth: 1
+            Layout.minimumWidth: 1
+            height: parent.height;
+
+            border.width: 1
+
+            Behavior on height {
+                NumberAnimation {
+                    duration: 500
+                    easing.type: Easing.OutCubic
                 }
             }
         }
 
-        Text {
-            Layout.fillWidth: true
+        SettingsActionView {
+            id: settingsActionView
+
             Layout.fillHeight: true
+            Layout.minimumWidth: root.width * 0.75
+            Layout.maximumWidth: root.width * 0.75
 
-            text: "TBD"
-
-            visible: palette.checked
+            group: settingsNav.buttonGroup
+            currentIndex: settingsNav.currentIndex
         }
     }
 }

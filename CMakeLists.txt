@@ -40,6 +40,10 @@ qt_add_qml_module(where
         qml/WhereButton.qml
         qml/SettingsView.qml
         qml/WhereToggleButton.qml
+        qml/HotkeySettingsView.qml
+        qml/SettingsButtonsView.qml
+        qml/WhereRadioButton.qml
+        qml/SettingsActionView.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
