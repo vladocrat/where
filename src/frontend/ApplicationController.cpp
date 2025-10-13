@@ -1,6 +1,7 @@
 #include "ApplicationController.hpp"
 
 #include <QQmlApplicationEngine>
+#include <QIcon>
 
 #include "SearchController.hpp"
 #include "SearchResultModel.hpp"
@@ -21,6 +22,9 @@ ApplicationController::ApplicationController(int& argc, char** argv)
     : QGuiApplication(argc, argv)
     , _impl{std::make_unique<Impl>()}
 {
+    QGuiApplication::setApplicationDisplayName("Where");
+    QGuiApplication::setWindowIcon(QIcon(":/icons/question_mark.svg"));
+
     qmlRegisterSingletonType<ModelController>("ModelController", 1, 0, "ModelController", [this](QQmlEngine*, QJSEngine*) -> QObject* {
         return &_impl->modelController;
     });
@@ -35,7 +39,6 @@ ApplicationController::ApplicationController(int& argc, char** argv)
     _impl->engine.setObjectOwnership(_impl->modelController.backendsModel(), QQmlEngine::CppOwnership);
 
     QObject::connect(SearchController::instance(), &SearchController::searchFinished, this, [this](const auto& files) {
-        qDebug() << files.size();
         _impl->modelController.searchResultModel()->setData(files);
     });
 

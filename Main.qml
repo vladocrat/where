@@ -13,7 +13,7 @@ Window {
     visible: true
     color: "transparent"
 
-    flags: Qt.Dialog | Qt.FramelessWindowHint
+    flags: Qt.Dialog | Qt.FramelessWindowHint 
 
     x: Math.round((Screen.width - width) / 2)
     y: Math.round((Screen.height - height) / 2)
