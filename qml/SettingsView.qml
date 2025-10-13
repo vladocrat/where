@@ -27,12 +27,16 @@ Item {
                 target: divider
                 height: root.height
             }
+            PropertyChanges {
+                target: settingsNav
+                focus: true
+            }
         }
     ]
 
     onVisibleChanged: {
         if (!visible) {
-            settingsNav.buttonGroup.checkedButton = null
+            settingsNav.buttonGroup.checkedButton = null;
         }
     }
 

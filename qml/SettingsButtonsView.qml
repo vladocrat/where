@@ -9,6 +9,14 @@ Item {
     readonly property alias buttonGroup: group
     property alias currentIndex: list.currentIndex
 
+    onFocusChanged: {
+        if (focus) {
+            root.focus = false;
+            list.focus = true;
+            console.log("here")
+        }
+    }
+
     ListModel {
         id: settingsModel
 
@@ -55,6 +63,12 @@ Item {
             }
         }
 
+        onCurrentIndexChanged: {
+            if (list.currentItem) {
+                list.currentItem.checked = true;
+            }
+        }
+
         states: [
             State {
                 name: "hidden"
@@ -97,5 +111,28 @@ Item {
                 }
             }
         ]
+
+        Keys.onPressed: function(event) {
+            switch (event.key) {
+            case Qt.Key_Up:
+                if (list.currentIndex >= 0) {
+                    list.currentIndex--;
+                }
+
+                break;
+
+            case Qt.Key_Down:
+                if (list.currentIndex < list.count - 1) {
+                    list.incrementCurrentIndex();
+                }
+
+                break;
+
+            default:
+                break;
+            }
+
+           event.accepted = true;
+        }
     }
 }
