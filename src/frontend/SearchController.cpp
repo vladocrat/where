@@ -16,6 +16,7 @@ void SearchController::search(const QString& query)
 
     if (!res) {
         emit error();
+        return;
     }
 
     emit searchFinished(res.value());
