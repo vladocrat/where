@@ -29,9 +29,9 @@ jobs:
           pip install pyzstd --only-binary=:all: || pip install pyzstd
 
       - name: Setup Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v4
         with:
-          version: '6.6.2'
+          version: '6.8.*'
           host: 'windows'
           target: 'win64_msvc2019_64'
 
