@@ -36,7 +36,7 @@ jobs:
         run: cmake --build build --config Release --parallel
 
       - name: Save artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: build/Release/
