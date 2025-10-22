@@ -33,7 +33,7 @@ jobs:
         with:
           version: '6.8.*'
           host: 'windows'
-          target: 'win64_msvc2019_64'
+          target: 'desktop'
 
       - name: Setup MSVC Environment
         uses: microsoft/setup-msbuild@v1
