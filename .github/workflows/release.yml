@@ -47,12 +47,12 @@ jobs:
         run: cmake --build build --config Release --parallel
 
       - name: Deploy Qt dependencies
-        run: |
-          # Find the built EXE
-          $exe = Get-ChildItem build/Release/*.exe | Select-Object -First 1
-          Write-Host "Deploying Qt for $exe"
-          # Run windeployqt
-          & "C:/Qt/6.8/*/msvc*/bin/windeployqt.exe" $exe.FullName
+              run: |
+                $exe = Get-ChildItem build/Release/*.exe | Select-Object -First 1
+                Write-Host "Deploying Qt for $exe"
+                $qtBin = "${{ steps.qt.outputs.qt-path }}\bin\windeployqt.exe"
+                & $qtBin $exe.FullName
+              shell: pwsh
 
       - name: Save artifacts
         uses: actions/upload-artifact@v4
