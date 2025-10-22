@@ -1,55 +1,79 @@
-name: Create release
+name: Build and Release QML C++ App
 
+# Two triggers:
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main     
+  workflow_dispatch: 
 
 jobs:
   build:
+    name: Build Application
     runs-on: windows-latest
+    if: github.event_name == 'push' 
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Setup Qt
-      uses: jurplel/install-qt-action@v2
-      with:
-        version: '6.6.2'
-        host: 'windows'
-        target: 'win64_msvc2019_64'
+      - name: Setup Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: '6.6.2'
+          host: 'windows'
+          target: 'win64_msvc2019_64'
 
-    - name: Setup MSVC Environment
-      uses: microsoft/setup-msbuild@v1
-      with:
-        vs-version: '17.6'
+      - name: Setup MSVC Environment
+        uses: microsoft/setup-msbuild@v1
+        with:
+          vs-version: '17.6'
 
-    - name: Configure CMake
-      run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+      - name: Configure CMake
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
 
-    - name: Build project
-      run: cmake --build build --config Release --parallel
+      - name: Build project
+        run: cmake --build build --config Release --parallel
 
-    - name: Package Application
-      run: |
-        mkdir release
-        xcopy /E /I /Y build\Release\* release\
-        xcopy /E /I /Y build\Release\where\* release\qml
+      - name: Save artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: build/Release/
 
-    - name: Create GitHub Release
-      id: create_release
-      uses: actions/create-release@v1
-      with:
-        tag_name: ${{ github.ref_name }}
-        release_name: Release ${{ github.ref_name }}
-        draft: false
-        prerelease: false
+  release:
+    name: Create Release
+    runs-on: windows-latest
+    needs: build
+    if: github.event_name == 'workflow_dispatch' 
 
-    - name: Upload Release Assets
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./release
-        asset_name: MyApp-${{ github.ref_name }}.zip
-        asset_content_type: application/zip
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: release/
+
+      - name: Package Application
+        run: |
+          powershell Compress-Archive -Path release/* -DestinationPath where.zip
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: release-${{ github.run_number }}
+          release_name: Manual Release 
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: where.zip
+          asset_name: where.zip
+          asset_content_type: application/zip
